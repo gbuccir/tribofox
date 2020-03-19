@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
+        <span>Número do caixa</span>
+        <br>
+        <input type="text" placeholder="Informe o código ou nome ou cpf/cnpj e tecle ENTER" />
+      </li>
+      <li class="nav-item">
+        <span>De</span>
+        <br>
+        <input type="date" />
+      </li>
+      <li class="nav-item dropdown">
+        <span>Até</span>
+        <br>
+        <input id="datepicker" type="date" />
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+    </form>
+  </div>
+</nav>
+
+
+<table>
+  <tr class="border_bottom" *ngFor="let caixa of this.caixas">
+    <td>
+      <span><b>{{caixa.codigoPublico}}</b>(Terminal {{caixa.pdvNumero}})</span>
+
+    </td>
+    <td>
+      <span>Data Abertura</span>
+      <br>
+      <label>{{caixa.dataAbertura | date : 'dd/MM/yyyy hh:mm:ss'}}</label>
+    </td>
+    <td>
+      <span>Data Fechamento</span>
+      <br>
+      <label>{{caixa.dataFechamento | date : 'dd/MM/yyyy hh:mm:ss'}}</label>
+    </td>
+    <td>
+      <span>Tempo aberto</span>
+      <br>
+      <label>3h:37min</label>
+    </td>
+    <td>
+      <span>Quantidade Vendas</span>
+      <br>
+      <label>{{caixa.totais.quantidadeVendas}}</label>
+    </td>
+    <td>
+      <span>Status</span>
+      <br>
+      <label>Aberto</label>
+    </td>
+  </tr>
+
+</table>

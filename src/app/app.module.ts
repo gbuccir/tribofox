@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ConsultaCaixaComponent } from './consulta-caixa/consulta-caixa/consulta-caixa.component';
+import { ConsultaCaixaComponent } from './componentes/consulta-caixa/consulta-caixa.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -12,7 +14,9 @@ import { ConsultaCaixaComponent } from './consulta-caixa/consulta-caixa/consulta
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
