@@ -5,18 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConsultaCaixaComponent } from './componentes/consulta-caixa/consulta-caixa.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { DashboardComponent } from './componentes/dashboard/dashboard/dashboard.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ConsultaCaixaComponent
+    ConsultaCaixaComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
-
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

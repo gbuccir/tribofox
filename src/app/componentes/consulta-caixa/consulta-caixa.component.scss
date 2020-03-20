@@ -1,0 +1,27 @@
+
+table{
+  width: 100%
+}
+
+
+tr.border_bottom td{
+  border-bottom: 1pt solid black;
+}
+
+
+
+bg-dark *{
+  color: white;
+}
+
+.lblfechado{
+  color: green;
+}
+
+.clunaPesquisa  button{
+  visibility: hidden
+}
+
+tr:hover .clunaPesquisa > button{
+      visibility:visible;
+  }

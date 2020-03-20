@@ -10,7 +10,7 @@
         <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
         <span>Número do caixa</span>
         <br>
-        <input type="text" placeholder="Informe o código ou nome ou cpf/cnpj e tecle ENTER" />
+        <input type="text" [(ngModel)]="this.pesquisa.codigo" placeholder="Informe o código ou nome ou cpf/cnpj e tecle ENTER" />
       </li>
       <li class="nav-item">
         <span>De</span>
@@ -25,7 +25,7 @@
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+      <button (click)="pesquisar()" class="btn btn-outline-success my-2 my-sm-0" type="button">Pesquisar</button>
     </form>
   </div>
 </nav>
@@ -60,8 +60,19 @@
     <td>
       <span>Status</span>
       <br>
-      <label>Aberto</label>
+      <label *ngIf="caixa.status == StatusCaixaEnum.Aberto"><b>Aberto</b></label>
+      <label class="lblfechado" *ngIf="caixa.status == StatusCaixaEnum.Fechado"><b>Fechado</b></label>
+    </td>
+    <td class="clunaPesquisa">
+      <button type="button" (click)="abreDashboard(caixa)" >Pesquisar</button>
     </td>
   </tr>
 
 </table>
+
+<app-dashboard
+*ngIf="this.caixaSelecionado != null"
+[caixaSelecionado]="this.caixaSelecionado"
+(fecharModal)="modalFechada()"
+
+></app-dashboard>
