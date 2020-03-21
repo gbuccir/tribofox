@@ -1,0 +1,32 @@
+<!-- The Modal -->
+<div id="modalMovimentacao" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <section class="header">
+      <p *ngIf="origem == OrigemEnum.Sangria">Sangria</p>
+      <p *ngIf="origem == OrigemEnum.Suprimento">Suprimento</p>
+      <span class="close" (click)="fechar()">&times;</span>
+    </section>
+
+    <section class="displayLinha">
+      <ul *ngIf="this.movimentacaoDetalhe.length > 0">
+        <li class="displayLinha linhaRepeat" *ngFor="let movimentacao of this.movimentacaoDetalhe">
+          <div>
+            <p>{{movimentacao.descricao}} </p>
+            <p>Valor: <b>R$ {{movimentacao.valor | currency}}</b> </p>
+            <p>Data: <b>{{movimentacao.data | date: "dd/MM/yyyy hh:mm"}}</b> </p>
+          </div>
+        </li>
+      </ul>
+
+      <div *ngIf="this.movimentacaoDetalhe.length <=0">
+        <h2>Não há movimentação do tipo
+          <b *ngIf="origem == OrigemEnum.Sangria">Sangria</b>
+          <b *ngIf="origem == OrigemEnum.Suprimento">Suprimento</b>
+        </h2>
+      </div>
+    </section>
+
+  </div>
+</div>

@@ -15,9 +15,9 @@
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
+  background-color: #333535;
   margin: auto;
-  padding: 20px;
+  color:white;
   border: 1px solid #888;
   width: 90%;
 }
@@ -38,13 +38,69 @@
 }
 
 .header{
-  text-align: center;
+background-color:#252525;
 }
 
-.displayLinha{
-display: flex;
-justify-content: space-around;
-align-items: center;
-flex-direction: row;
+.header p{
+  color: white;
+  text-align: center;
+  position: relative;
+  top: 20px;
+  }
 
+  .header span{
+  position: relative;
+   top: -25px;
+   right: 10px;
+    color: white;
+  }
+
+  .sub-header{
+    margin:10px 0
+  }
+
+.sub-header p{
+  margin: 0;
+}
+.sub-header label{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.displayLinha.diplaySubheader{
+  justify-content: space-evenly;
+}
+
+.blocoCor{
+  width: 20%;
+  padding: 10px 0;
+  height: 122px;
+}
+
+.laranja{
+background-color:#dc9d28 ;
+}
+
+.azul{
+  background-color:#0593d7 ;
+}
+
+.verdeclaro{
+  background-color:#129989 ;
+}
+
+.verde{
+  background-color:#119345 ;
+}
+
+.azulescuro{
+  background-color:#473e8b ;
+}
+
+.informacoesAdicionais{
+align-items: unset;
+}
+
+.informacoesAdicionais p{
+  text-align: left;
 }

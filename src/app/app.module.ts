@@ -7,6 +7,7 @@ import { ConsultaCaixaComponent } from './componentes/consulta-caixa/consulta-ca
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './componentes/dashboard/dashboard/dashboard.component';
+import { MovimentacaoDetalheComponent } from './componentes/movimentacao-detalhe/movimentacao-detalhe/movimentacao-detalhe.component';
 
 
 
@@ -14,7 +15,8 @@ import { DashboardComponent } from './componentes/dashboard/dashboard/dashboard.
   declarations: [
     AppComponent,
     ConsultaCaixaComponent,
-    DashboardComponent
+    DashboardComponent,
+    MovimentacaoDetalheComponent
   ],
   imports: [
     BrowserModule,

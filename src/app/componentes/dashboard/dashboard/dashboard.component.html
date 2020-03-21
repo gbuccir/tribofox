@@ -4,20 +4,20 @@
   <!-- Modal content -->
   <div class="modal-content">
     <section class="header">
-      <p>Vendas > Caixas Individuais > Conferencia de caixa</p>
-      <span class="close" (click)="fechar()">&times;</span>
+      <p >Vendas > Caixas Individuais > Conferencia de caixa</p>
+      <span class="close clicavel" (click)="fechar()">&times;</span>
     </section>
 
-    <section class="header displayLinha">
-      <div>
+    <section class="displayLinha diplaySubheader">
+      <div class="sub-header">
         <p>Caixa </p>
         <label>{{caixaDetalhe.codigoPublico}}</label>
       </div>
-      <div>
+      <div class="sub-header">
         <p>Abertura</p>
         <label>{{caixaDetalhe.usuarioAberturaTexto}} - {{caixaDetalhe.dataAbertura | date: "dd/MM/yyyy hh:mm"}}</label>
       </div>
-      <div>
+      <div class="sub-header">
         <p>Fechamento </p>
         <label
           *ngIf="this.caixaDetalhe.usuarioFechamento == null || this.caixaDetalhe.usuarioFechamento == 'undefined'">{{this.caixaDetalhe.dataFechamentoNull}}</label>
@@ -27,80 +27,115 @@
     </section>
 
 
-    <section class="header displayLinha">
-      <div>
+    <section class="displayLinha">
+      <div class="blocoCor laranja">
         <h4>Total de vendas</h4>
-        <h4>R$ {{this.caixaDetalhe.totais.vendas}}</h4>
+        <br>
+        <h3>{{this.caixaDetalhe.totais.vendas | currency : 'R$'}}</h3>
       </div>
-      <div>
+      <div class="blocoCor azul">
         <h4>Quantidade de vendas</h4>
-        <h4>{{this.caixaDetalhe.totais.quantidadeVendas}}</h4>
+        <br>
+        <h3>{{this.caixaDetalhe.totais.quantidadeVendas}}</h3>
       </div>
-      <div>
+      <div class="blocoCor verdeclaro">
         <h4>Ticket Médio</h4>
-        <h4>R$ {{this.caixaDetalhe.tcm}}</h4>
+        <br>
+        <h3> {{this.caixaDetalhe.tcm | currency :'R$'}}</h3>
       </div>
-      <div>
+      <div class="blocoCor verde">
         <h4>Dinheiro disponível</h4>
-        <h4>R$ {{this.caixaDetalhe.totais.dinheiro}}</h4>
+        <br>
+        <h3> {{this.caixaDetalhe.totais.dinheiro | currency :'R$'}}</h3>
       </div>
-      <div>
+      <div class="blocoCor azulescuro">
         <h4>Fiscal</h4>
-        <h4>R$ {{this.caixaDetalhe.totais.fiscais}}</h4>
+        <br>
+        <h3> {{this.caixaDetalhe.totais.fiscais | currency :'R$'}}</h3>
       </div>
     </section>
 
-    <section class="header displayLinha">
+    <section class="displayLinha informacoesAdicionais">
       <div>
         <h4>Movimentações caixa</h4>
-        <p>Caixa inicial ..........R$ {{this.caixaDetalhe.caixaInicial}}</p>
-        <!-- rever -->
-        <p (click)="abreMovimentacao(2, this.caixaDetalhe.movimentacoes)">Suprimentos
-          <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
-            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
+        <p>Caixa inicial .......... {{this.caixaDetalhe.caixaInicial | currency :'R$'}}</p>
+        <p class="clicavel" (click)="abreMovimentacao(2, this.caixaDetalhe.movimentacoes)">Suprimentos
+          <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z"
+              clip-rule="evenodd" />
+            <path fill-rule="evenodd"
+              d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
+              clip-rule="evenodd" />
           </svg>
-           ..........R$ {{this.caixaDetalhe.totais.suprimentos}}</p>
-        <!-- rever -->
-        <p (click)="abreMovimentacao(1, this.caixaDetalhe.movimentacoes)">Sangrias
-          <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
-            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
+          .......... {{this.caixaDetalhe.totais.suprimentos | currency :'R$'}}</p>
+        <p class="clicavel" (click)="abreMovimentacao(1, this.caixaDetalhe.movimentacoes)">Sangrias
+          <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z"
+              clip-rule="evenodd" />
+            <path fill-rule="evenodd"
+              d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
+              clip-rule="evenodd" />
           </svg>
-           ..........R$ {{this.caixaDetalhe.totais.sangrias}}</p>
+          .......... {{this.caixaDetalhe.totais.sangrias | currency :'R$'}}</p>
       </div>
       <div>
         <h4>Quantidade de vendas</h4>
-        <p>Cheque à vista ..........R$ {{this.caixaDetalhe.totais.cheque}}</p>
-        <p>Débito ..........R$ {{this.caixaDetalhe.totais.debito}}</p>
-        <p>Dinheiro ..........R$ {{this.caixaDetalhe.totais.dinheiro}}</p>
+        <p>Cheque à vista .......... {{this.caixaDetalhe.totais.cheque | currency :'R$'}}</p>
+        <p>Débito .......... {{this.caixaDetalhe.totais.debito | currency :'R$'}}</p>
+        <p>Dinheiro .......... {{this.caixaDetalhe.totais.dinheiro | currency :'R$'}}</p>
       </div>
       <div>
         <h4>Pagamento à Prazo</h4>
-        <p>Boleto ..........R$ {{this.caixaDetalhe.totais.boleto}}</p>
-        <p>Crédito ..........R$ {{this.caixaDetalhe.totais.credito}}</p>
+        <p>Boleto .......... {{this.caixaDetalhe.totais.boleto | currency :'R$'}}</p>
+        <p>Crédito .......... {{this.caixaDetalhe.totais.credito | currency :'R$'}}</p>
         <!-- rever -->
-        <p>Cheque pré ..........R$ {{this.caixaDetalhe.totais.vendas}}</p>
-        <p>Crediário ..........R$ {{this.caixaDetalhe.totais.crediario}}</p>
-        <p>Pendurar ..........R$ {{this.caixaDetalhe.totais.pendurar}}</p>
-        <p>Vale aliment./ref. ..........R$ {{this.caixaDetalhe.totais.valeAlimentacao}}</p>
-        <p>Outros ..........R$ {{this.caixaDetalhe.totais.outros}}</p>
+        <p>Cheque pré .......... {{this.caixaDetalhe.totais.cheque | currency :'R$'}}</p>
+        <p>Crediário .......... {{this.caixaDetalhe.totais.crediario | currency :'R$'}}</p>
+        <p>Pendurar .......... {{this.caixaDetalhe.totais.pendurar | currency :'R$'}}</p>
+        <p>Vale aliment./ref. .......... {{this.caixaDetalhe.totais.valeAlimentacao | currency :'R$'}}</p>
+        <p>Outros .......... {{this.caixaDetalhe.totais.outros | currency :'R$'}}</p>
       </div>
       <div>
         <h4>Informações Adicionais</h4>
         <!-- rever -->
-        <p>Vale emitido ..........R$ {{this.caixaDetalhe.totais.vendas}}</p>
-        <p>Vale recebido ..........R$ {{this.caixaDetalhe.totais.valeRecebido}}</p>
-        <p>Pgto Crediário ..........R$ {{this.caixaDetalhe.totais.pagamentoCrediario}}</p>
-        <p>Dinheiro inf ..........R$ {{this.caixaDetalhe.totais.vendasDinheiro}}</p>
+        <p>Vale emitido
+          <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z"
+              clip-rule="evenodd" />
+            <path fill-rule="evenodd"
+              d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
+              clip-rule="evenodd" />
+          </svg>
+           .......... {{this.caixaDetalhe.totais.valeEmitido | currency :'R$'}}</p>
+        <p>Vale recebido
+          <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z"
+              clip-rule="evenodd" />
+            <path fill-rule="evenodd"
+              d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
+              clip-rule="evenodd" />
+          </svg>
+          .......... {{this.caixaDetalhe.totais.valeRecebido | currency :'R$'}}</p>
+        <p>Pgto Crediário .......... {{this.caixaDetalhe.totais.pagamentoCrediario | currency :'R$'}}</p>
+        <p>Dinheiro inf .......... {{this.caixaDetalhe.totais.vendasDinheiro | currency :'R$'}}</p>
       </div>
       <div>
         <h4>Informações NF</h4>
-        <p>Quantidade ..........{{this.caixaDetalhe.totais.quantidadeVendas}}</p>
-        <p>Total ..........R$ {{this.caixaDetalhe.totais.vendas}}</p>
+        <p>Quantidade .......... {{this.caixaDetalhe.totais.quantidadeVendas}}</p>
+        <p>Total .......... {{this.caixaDetalhe.totais.vendas | currency :'R$'}}</p>
       </div>
     </section>
 
   </div>
 
 </div>
+<app-movimentacao-detalhe *ngIf="this.movimentacaoDetalhe != null" [movimentacaoDetalhe]="this.movimentacaoDetalhe"
+  [origem]="this.origem" (fecharModal)="modalFechadaMovimentacao()"></app-movimentacao-detalhe>

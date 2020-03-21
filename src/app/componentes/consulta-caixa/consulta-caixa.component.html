@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bgHeader">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -6,26 +6,42 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item">
         <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
-        <span>Número do caixa</span>
-        <br>
-        <input type="text" [(ngModel)]="this.pesquisa.codigo" placeholder="Informe o código ou nome ou cpf/cnpj e tecle ENTER" />
+        <div>
+          <span>Número do caixa</span>
+          <br>
+          <input type="text" [(ngModel)]="this.pesquisa.codigo" placeholder="Informe o código pesquise ao lado" />
+        </div>
       </li>
       <li class="nav-item">
-        <span>De</span>
-        <br>
-        <input type="date" />
+        <div>
+          <span>De</span>
+          <br>
+          <input type="date" [(ngModel)]="this.pesquisa.dataInicio"/>
+        </div>
       </li>
       <li class="nav-item dropdown">
-        <span>Até</span>
-        <br>
-        <input id="datepicker" type="date" />
+        <div>
+          <span>Até</span>
+          <br>
+          <input id="datepicker" type="date" [(ngModel)]="this.pesquisa.dataFim"/>
+        </div>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
-      <button (click)="pesquisar()" class="btn btn-outline-success my-2 my-sm-0" type="button">Pesquisar</button>
+      <button class="clicavel" (click)="pesquisar()" class="btn btn-outline my-2 my-sm-0 btnPesquisa" type="button">
+        <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z"
+            clip-rule="evenodd" />
+          <path fill-rule="evenodd"
+            d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
+            clip-rule="evenodd" />
+        </svg>
+        Pesquisar</button>
     </form>
   </div>
 </nav>
@@ -38,41 +54,47 @@
 
     </td>
     <td>
-      <span>Data Abertura</span>
+      <i>Data Abertura</i>
       <br>
-      <label>{{caixa.dataAbertura | date : 'dd/MM/yyyy hh:mm:ss'}}</label>
+      <label><b>{{caixa.dataAbertura | date : 'dd/MM/yyyy hh:mm:ss'}}</b></label>
     </td>
     <td>
-      <span>Data Fechamento</span>
+      <i> Data Fechamento</i>
       <br>
-      <label>{{caixa.dataFechamento | date : 'dd/MM/yyyy hh:mm:ss'}}</label>
+      <label><b>{{caixa.dataFechamento | date : 'dd/MM/yyyy hh:mm:ss'}}</b></label>
     </td>
     <td>
-      <span>Tempo aberto</span>
+      <i> Tempo aberto</i>
       <br>
-      <label>3h:37min</label>
+      <label><b>{{caixa.Diferenca}}</b></label>
     </td>
     <td>
-      <span>Quantidade Vendas</span>
+      <i>Quantidade Vendas</i>
       <br>
-      <label>{{caixa.totais.quantidadeVendas}}</label>
+      <label><b>{{caixa.totais.quantidadeVendas}}</b></label>
     </td>
     <td>
-      <span>Status</span>
+      <i>Status</i>
       <br>
       <label *ngIf="caixa.status == StatusCaixaEnum.Aberto"><b>Aberto</b></label>
       <label class="lblfechado" *ngIf="caixa.status == StatusCaixaEnum.Fechado"><b>Fechado</b></label>
     </td>
     <td class="clunaPesquisa">
-      <button type="button" (click)="abreDashboard(caixa)" >Pesquisar</button>
+      <button class="clicavel" type="button" (click)="abreDashboard(caixa)">
+        <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z"
+            clip-rule="evenodd" />
+          <path fill-rule="evenodd"
+            d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
+            clip-rule="evenodd" />
+        </svg>
+      </button>
     </td>
   </tr>
 
 </table>
 
-<app-dashboard
-*ngIf="this.caixaSelecionado != null"
-[caixaSelecionado]="this.caixaSelecionado"
-(fecharModal)="modalFechada()"
-
-></app-dashboard>
+<app-dashboard *ngIf="this.caixaSelecionado != null" [caixaSelecionado]="this.caixaSelecionado"
+  (fecharModal)="modalFechada()"></app-dashboard>

@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import DesafioCaixas from '../../../../assets/DesafioCaixas.json';
-import { StatusCaixaEnum } from 'src/app/enums/status-caixa-enum.enum';
 import * as $ from 'jquery';
+import { OrigemEnum } from 'src/app/enums/origem-enum.enum';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,11 +14,17 @@ export class DashboardComponent implements OnInit {
 
   public caixaDetalhe = null;
 
+
   @Input()
   caixaSelecionado: any
 
-  @Output()
+  @Output() //Output para a consulta caixa
   fecharModal = new EventEmitter<any>();
+
+  @Output() // paraa modal movimentacao
+  emitir = new EventEmitter<any>();
+  movimentacaoDetalhe = null
+  origem = null
 
   fechar() {
     this.fecharModal.emit();
@@ -42,12 +48,34 @@ export class DashboardComponent implements OnInit {
     }
 
     let { totais } = this.caixaDetalhe;
+    let { movimentacoes } = this.caixaDetalhe;
     let { quantidadeVendas } = totais;
     let { vendas } = totais;
 
+
     this.caixaDetalhe.tcm = this.calculaTcm(vendas, quantidadeVendas)
+    this.caixaDetalhe.totais.sangrias = this.calcularSangria(movimentacoes)
+    this.caixaDetalhe.totais.suprimentos = this.calcularSuprimentos(movimentacoes)
+    this.caixaDetalhe.totais.valeEmitido = this.caixaDetalhe.totais.valeRefeicao + this.caixaDetalhe.totais.valeAlimentacao
 
     console.log(this.caixaDetalhe)
+  }
+
+  calcularSangria(movimentacoes) {
+    let sangria = 0
+    let sangrias = [];
+    sangrias = movimentacoes.filter(m => m.origem == OrigemEnum.Sangria)
+    sangria = sangrias.reduce((a, b) => a + b.valor, 0)
+    return sangria
+  }
+
+
+  calcularSuprimentos(movimentacoes) {
+    let suprimento = 0
+    let suprimentos = [];
+    suprimentos = movimentacoes.filter(m => m.origem == OrigemEnum.Suprimento)
+    suprimento = suprimentos.reduce((a, b) => a + b.valor, 0)
+    return suprimento
   }
 
   //Volume Total de Vendas no período, ou Venda Totais (VT)
@@ -58,9 +86,13 @@ export class DashboardComponent implements OnInit {
   }
 
   abreMovimentacao(origem, movimentacoes) {
-    console.log(origem)
-    console.log(movimentacoes)
+    this.origem = origem;
+    this.movimentacaoDetalhe = movimentacoes;
+  }
 
+  modalFechadaMovimentacao() {
+    this.emitir = new EventEmitter<any>();
+    this.movimentacaoDetalhe = null;
   }
 
 

@@ -5,13 +5,25 @@ table{
 
 
 tr.border_bottom td{
+  padding: 0 15px;
   border-bottom: 1pt solid black;
 }
 
 
 
-bg-dark *{
+
+.bgHeader{
+  background-color: #353535;
+}
+
+.nav-item span{
   color: white;
+}
+
+.nav-item input{
+  background-color: #222222;
+  color:white;
+  border: 0;
 }
 
 .lblfechado{
@@ -22,6 +34,34 @@ bg-dark *{
   visibility: hidden
 }
 
+tr:hover{
+  background-color:   #a5cef0;
+}
+
 tr:hover .clunaPesquisa > button{
       visibility:visible;
+      background-color: #047bc5;
+      border: 0;
   }
+
+  .nav-item div{
+    margin: 0 10px;
+  }
+
+  .nav-item div > input[type='text']{
+    width: 385px;
+  }
+
+  .btnPesquisa:hover{
+    border:white;
+    color: white;
+    background-color: black;
+  }
+
+  .btnPesquisa{
+    border:white;
+    color: white;
+
+  }
+
+

@@ -1,2 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+.displayLinha{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  text-align: center;
+  }
+
+  .bgHeader{
+    background-color: #353535;
+  }
+
+  .nav-item span{
+    color: white;
+  }
+
+  .clicavel{
+    cursor: pointer;
+  }
