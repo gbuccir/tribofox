@@ -1,7 +1,8 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import DesafioCaixas from '../../../assets/DesafioCaixas.json';
 import { StatusCaixaEnum } from 'src/app/enums/status-caixa-enum.enum';
-//import * as $ from 'jquery';
+
+/////O retorno da propriedade 'codigoPublico' no json não vem de forma completa, por isso na tela não aparecem todos os digitos
 
 // explicação do problema encontrado no JSON na propriedade codigoPublico
 // https://stackoverflow.com/questions/10631494/json-parse-parses-converts-big-numbers-incorrectly
@@ -45,15 +46,11 @@ export class ConsultaCaixaComponent implements OnInit {
     this.caixas = caixas;
     this.caixasAux = caixas;
 
-    console.log(this.caixas);
-
     var difference = this.daysBetween(this.caixas[0].dataAbertura, this.caixas[0].dataFechamento);
 
     this.caixas.forEach(element => {
       element.Diferenca = this.daysBetween(element.dataAbertura, element.dataFechamento)
     });
-
-    console.log(difference);
   }
 
 
@@ -84,18 +81,6 @@ export class ConsultaCaixaComponent implements OnInit {
     return days + 'D:' + hours + 'H:' + minutes + 'M:' + seconds + 'Seg';
   }
 
-  // dateDiffInDays(data) {
-  //   const _MS_PER_DAY = 1000 * 60 * 60 * 24;
-
-  //   var a = new Date();
-  //   var b = new Date(data)
-  //   // Discard the time and time-zone information.
-  //   const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
-  //   const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
-
-  //   return Math.floor((utc2 - utc1) / _MS_PER_DAY);
-  // }
-
   abreDashboard(caixa) {
     /// passa caixa como parametro para a modal de dashboard
     this.caixaSelecionado = caixa.id
@@ -104,11 +89,12 @@ export class ConsultaCaixaComponent implements OnInit {
   pesquisar() {
     /// definir o fluxo
 
-    if (this.pesquisa.codigo !== '' || this.pesquisa.dataInicio !== '' || this.pesquisa.dataFim != '')
-      this.caixas = this.caixas.filter(i => i.codigoPublico == this.pesquisa.codigo || new Date(i.dataAbertura).getTime() == new Date(this.pesquisa.dataInicio).getTime());
+    ////falta terminar
+    if (this.pesquisa.codigo !== '' || this.pesquisa.dataInicio !== '' || this.pesquisa.dataFim != '') {
+      // this.caixas = this.caixas.filter(i => i.codigoPublico == this.pesquisa.codigo || new Date(i.dataAbertura).getTime() == new Date(this.pesquisa.dataInicio).getTime());
+    }
     else
       this.caixas = this.caixasAux;
-
   }
 
 

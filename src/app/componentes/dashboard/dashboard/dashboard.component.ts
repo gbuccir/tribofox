@@ -33,14 +33,12 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     $('#myModal').css("display", "block");
-    console.log(this.caixaSelecionado)
     this.encontrarDetalheporId()
   }
 
 
   encontrarDetalheporId() {
     const { caixas_detalhes } = DesafioCaixas;
-    console.log(caixas_detalhes)
 
     this.caixaDetalhe = caixas_detalhes.filter(c => c.caixa.id == this.caixaSelecionado)[0].caixa;
     if (this.caixaDetalhe.usuarioFechamento == null || this.caixaDetalhe.usuarioFechamento == 'undefined') {
@@ -58,7 +56,6 @@ export class DashboardComponent implements OnInit {
     this.caixaDetalhe.totais.suprimentos = this.calcularSuprimentos(movimentacoes)
     this.caixaDetalhe.totais.valeEmitido = this.caixaDetalhe.totais.valeRefeicao + this.caixaDetalhe.totais.valeAlimentacao
 
-    console.log(this.caixaDetalhe)
   }
 
   calcularSangria(movimentacoes) {

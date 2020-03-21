@@ -17,7 +17,7 @@ export class MovimentacaoDetalheComponent implements OnInit {
   @Input()
   movimentacaoDetalhe: any;
   @Input()
-  origem:any;
+  origem: any;
 
   @Output()
   fecharModal = new EventEmitter<any>();
@@ -29,13 +29,7 @@ export class MovimentacaoDetalheComponent implements OnInit {
 
   ngOnInit() {
     $('#modalMovimentacao').css("display", "block");
-
     this.movimentacaoDetalhe = this.movimentacaoDetalhe.filter(m => m.origem == OrigemEnum.Sangria || m.origem == OrigemEnum.Suprimento)
-    console.log(this.movimentacaoDetalhe)
-    console.log(this.origem)
   }
-
-
-
 
 }
